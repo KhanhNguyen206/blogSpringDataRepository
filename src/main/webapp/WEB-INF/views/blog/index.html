@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h3>Blog</h3>
+
+<div>
+    <a th:href="@{/blog/create}">Creat a blog</a>
+</div>
+
+<div th:if="${success}">
+    <span th:text="${success}"></span>
+</div>
+
+<div>
+    <a th:href="@{'/blog'(page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}">Previous</a>
+    <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:href="@{'/blog'(page=${blogs.number + 1})}" th:if="${blogs.hasNext()}">Next</a>
+</div>
+
+<table border="1px">
+    <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+    </tr>
+    <tr th:each="blog: ${blogs}">
+        <td th:text="*{blog.title}"></td>
+        <td th:text="${blog.category.name}"></td>
+        <td><a th:href="@{/blog/edit/{id}(id = ${blog.getId()})}">Edit</a></td>
+        <td><a th:href="@{/blog/delete/{id}(id = ${blog.getId()})}">Delete</a></td>
+        <td><a th:href="@{/blog/detail/{id}(id = ${blog.getId()})}">Detail</a></td>
+    </tr>
+</table>
+</body>
+</html>

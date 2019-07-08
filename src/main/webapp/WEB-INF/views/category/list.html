@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Blog Category</h3>
+
+<br>
+
+<div>
+    <a th:href="@{/blog}">Back to Blog list</a>
+</div>
+
+<br>
+
+<div>
+    <a th:href="@{/category/create}">Add a category</a>
+</div>
+
+<br>
+
+<div th:if="${success}">
+    <span th:text="${success}"></span>
+</div>
+
+<table border="1px">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Detail</th>
+    </tr>
+    <tr th:each="row : ${categories}">
+        <td th:text="*{row.name}"></td>
+        <td><a th:href="@{category/edit(id=${row.getId()})}">Edit</a></td>
+        <td><a th:href="@{category/delete(id=${row.getId()})}">Delete</a></td>
+        <td><a th:href="@{category/view(id=${row.getId()})}">Detail</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

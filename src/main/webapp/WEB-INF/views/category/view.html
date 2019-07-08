@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<h3>Detail</h3>
+
+<br>
+<div>
+    <a th:href="@{/blog}">Back to blogs</a>
+</div>
+
+<br>
+
+<div>
+    <a th:href="@{/category}">Back to categories</a>
+</div>
+
+<br>
+
+<div>
+    <p th:text="${category.getName()}"></p>
+</div>
+</body>
+</html>

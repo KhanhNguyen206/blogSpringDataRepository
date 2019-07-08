@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<h3>Add a category</h3>
+<br>
+<div>
+    <a th:href="@{/blog}">Back to blogs</a>
+</div>
+
+<br>
+
+<div>
+    <a th:href="@{/category}">Back to categories</a>
+</div>
+
+<br>
+
+<form method="post" th:action="@{/category/delete}" th:object="${category}">
+    <input type="hidden" th:field="*{id}">
+
+    <div>
+        <label>Name: </label><br>
+        <input th:field="*{name}" type="text">
+    </div>
+
+    <div>
+        <input type="submit" value="Delete">
+    </div>
+</form>
+</body>
+</html>
